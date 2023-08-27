@@ -3,10 +3,10 @@ COPY . openmrs-core
 RUN cd openmrs-core && \
     mvn clean package 
 
-    
+
 FROM tomcat:8
 LABEL AUTHOR=balaji
-LABEL BLOG=https://directdevops.blog
+LABEL app=openmrs
 EXPOSE 8080
 VOLUME /root/.OpenMRS
 COPY --from=mavenbuild /openmrs-core/webapp/target/openmrs.war /usr/local/tomcat/webapps/openmrs.war
